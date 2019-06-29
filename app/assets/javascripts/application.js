@@ -18,7 +18,34 @@
 //= require materialize-sprockets
 //= require_tree .
 
+$(document).on("turbolinks:load", function() {
 
-$(document).ready(function(){
-  $('.carousel').carousel();
 });
+
+$(document).ready(function() {
+  $(".carousel").carousel();
+});
+
+$(document).ready(function() {
+  $(".sidenav").sidenav({ edge: "right" });
+});
+
+$(document).ready(function() {
+  $(".parallax").parallax();
+});
+
+
+ocument.addEventListener('turbolinks:load', function() {
+  elem = document.querySelector('#slide-out');
+  instance = new M.Sidenav(elem, {});
+});
+
+document.addEventListener('turbolinks:before-visit', function() {
+  elem = document.querySelector('#slide-out');
+  instance = M.Sidenav.getInstance(elem);
+  if (instance){
+    instance.destroy();
+  }
+});
+
+

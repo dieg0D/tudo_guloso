@@ -1,0 +1,29 @@
+<%= render partial: './common/header' %>
+
+<div class="container">
+    <h1>User Settings</h1>
+
+    <%= form_with(model: @user, local: :true, method: :put, url: user_path(@user)) do |f| %> <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert-error">
+        O formulário contém <%= pluralize(@user.errors.count, "erro") %>.
+      </div>
+    </div>
+    <% end %>
+    
+    <div class="input-field">
+      <%= f.label :name %> <%= f.text_field :name, class: "border-login", required: true %>
+    </div>
+    
+    <div class="input-field">
+      <%= f.label :email %> <%= f.email_field :email, class: "border-login" , required: true%>
+    </div>
+    <br />
+    <div class="actions">
+      <%= f.submit "atualizar", class: "waves-effect waves-light btn btn-login"%>
+    </div>
+    
+    <% end %>
+</div>
+
+<%= render partial: './common/footer' %>

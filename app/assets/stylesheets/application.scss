@@ -16,3 +16,18 @@
 
 @import "materialize";
 @import "material_icons";
+@import "sessions";
+@import "pages";
+
+
+body{
+  padding: 0;
+  margin: 0
+}
+
+
+@media only screen and (min-width: 993px){
+  nav a.sidenav-trigger {
+      display: block;
+  }
+}

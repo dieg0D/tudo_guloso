@@ -19,7 +19,31 @@ class User < ApplicationRecord
       SQL
     else
       errors.add(:password, "As senhas não batem")
+      false
     end
+  end
+
+  def find_user(id)
+    connection = ActiveRecord::Base.connection
+    result = connection.execute <<-SQL 
+    SELECT * FROM "users" WHERE id = '#{id}';
+    SQL
+    result = JSON.parse(result.to_json)[0]
+    return User.new(id: result["id"], name: result["name"],email: result["email"])
+  end
+
+  def update_user(name,email,id)
+    connection = ActiveRecord::Base.connection
+    connection.execute <<-SQL
+    UPDATE "users" SET name = '#{name}', email ='#{email}' WHERE id = '#{id}';
+    SQL
+  end
+
+  def delete_user(id)
+    connection = ActiveRecord::Base.connection
+    connection.execute <<-SQL
+    DELETE FROM "users" WHERE id = '#{id}';
+    SQL
   end
 
 end
