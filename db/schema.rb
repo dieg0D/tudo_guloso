@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_134009) do
     t.string "email", null: false
     t.string "city"
     t.string "street"
-    t.integer "age"
+    t.date "age"
     t.binary "profile_pic"
     t.string "password_digest"
     t.index ["email"], name: "users_email_key", unique: true

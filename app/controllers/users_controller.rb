@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.create_user
-      redirect_to root_path, notice: "Usuário foi criado com sucesso!"
+      redirect_to sign_in_path, notice: "Usuário foi criado com sucesso!"
     else 
       render action: :new
     end
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :profile_pic, :city, :street, :age, :password, :password_confirmation)
     end
 
 end

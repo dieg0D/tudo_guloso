@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
         "email" VARCHAR UNIQUE NOT NULL,
         "city" VARCHAR,
         "street" VARCHAR,
-        "age" INTEGER,
+        "age" DATE,
         "profile_pic" BYTEA,
         "password_digest" VARCHAR);
     SQL

@@ -1,4 +1,6 @@
 require 'bcrypt'
+require "base64"
+
 class User < ApplicationRecord
   has_secure_password
   include BCrypt
@@ -13,13 +15,15 @@ class User < ApplicationRecord
   def create_user
     if self.password == self.password_confirmation
       @p = BCrypt::Password.create(self.password)
+      @image   = Base64.strict_encode64(self.profile_pic.read.to_s)
       connection = ActiveRecord::Base.connection
       connection.execute <<-SQL 
-      INSERT INTO "users" (name, email, password_digest) VALUES ('#{self.name}', '#{self.email}','#{@p}');
+      INSERT INTO "users" (name, email, city, street, profile_pic, age, password_digest) VALUES ('#{self.name}', '#{self.email}', '#{self.city}','#{self.street}', '#{@image}','#{self.age}','#{@p}');
       SQL
+      return true
     else
       errors.add(:password, "As senhas não batem")
-      false
+      return false
     end
   end
 
