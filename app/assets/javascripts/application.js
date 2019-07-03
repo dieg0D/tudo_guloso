@@ -15,27 +15,24 @@
 //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
-//= require materialize-sprockets
+//= require materialize
 //= require_tree .
 
-$(document).on("turbolinks:load", function() {
 
-});
-
-$(document).ready(function() {
+$(document).on('turbolinks:load',function() {
   $(".carousel").carousel();
 });
 
-$(document).ready(function() {
+$(document).on('turbolinks:load',function() {
   $(".sidenav").sidenav({ edge: "right" });
 });
 
-$(document).ready(function() {
+$(document).on('turbolinks:load',function() {
   $(".parallax").parallax();
 });
 
 
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
   $('.datepicker').datepicker();
 });
 

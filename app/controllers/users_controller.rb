@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    if @user.update_user(params[:user][:name], params[:user][:email], @user.id)
+    if @user.update_user(params[:user][:name], params[:user][:email], params[:user][:city], params[:user][:street], params[:user][:age], params[:user][:profile_pic], @user.id)
       redirect_to user_path(@user.id)
     else
       render action: :edit
