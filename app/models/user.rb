@@ -33,13 +33,16 @@ class User < ApplicationRecord
     SELECT * FROM "users" WHERE id = '#{id}';
     SQL
     result = JSON.parse(result.to_json)[0]
-    return User.new(id: result["id"], name: result["name"],email: result["email"])
+    return User.new(id: result["id"], name: result["name"], email: result["email"], city: result["city"], street: result["street"], age: result["age"],  profile_pic: result["profile_pic"])
   end
 
-  def update_user(name,email,id)
+  def update_user(name,email,city,street,age,profile_pic,id)
+    if profile_pic
+      image = Base64.strict_encode64(profile_pic.open.read.to_s)
+    end
     connection = ActiveRecord::Base.connection
     connection.execute <<-SQL
-    UPDATE "users" SET name = '#{name}', email ='#{email}' WHERE id = '#{id}';
+    UPDATE "users" SET name = '#{name}', email ='#{email}', city ='#{city}', street = '#{street}', age ='#{age}', profile_pic ='#{image}' WHERE id = '#{id}';
     SQL
   end
 

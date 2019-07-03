@@ -1,11 +1,10 @@
-class CreateUserMatches < ActiveRecord::Migration[5.2]
+class CreateMessages < ActiveRecord::Migration[5.2]
   def change
     execute <<-SQL 
-      CREATE TABLE "user_matches"(
+      CREATE TABLE "messages"(
         "id" SERIAL PRIMARY KEY  NOT NULL,
-        "user_id" INTEGER,
         "match_id" INTEGER,
-        FOREIGN KEY (user_id) REFERENCES "users" (id),
+        "message_content" VARCHAR,
         FOREIGN KEY (match_id) REFERENCES "matches" (id));
     SQL
   end
