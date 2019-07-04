@@ -1,0 +1,51 @@
+<%= form_with(model: recipe, local: true) do |form| %>
+  <% if recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div >
+    <div class="file-field input-field">
+      <div class="btn btn-file waves-effect waves-light">
+        <span>Browse</span>
+        <%= form.file_field :photo_recipe %>
+      </div>
+
+      <div class="file-path-wrapper">
+        <input
+          class="file-path validate border-login"
+          type="text"
+          placeholder="Upload file"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :instructions %>
+    <%= form.text_area :instructions, class: "materialize-textarea border-login" %>
+  </div>
+
+  <div class="input-field">
+    <%= form.collection_select(:dish_id, @dishes, :id, :name, prompt: true) %>
+  </div>
+  
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="actions">
+    <%= form.submit "Ok", class: "waves-effect waves-light btn btn-login" %>
+  </div>
+<% end %>
+

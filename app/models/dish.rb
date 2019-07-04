@@ -15,7 +15,7 @@ class Dish < ApplicationRecord
   def create_dish
     connection = ActiveRecord::Base.connection
     connection.execute <<-SQL 
-    INSERT INTO "dishes" (name, dish_id) VALUES ('#{self.name}', '#{self.category_id}');
+    INSERT INTO "dishes" (name, category_id) VALUES ('#{self.name}', '#{self.category_id}');
     SQL
     return true
   end

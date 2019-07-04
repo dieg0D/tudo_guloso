@@ -44,7 +44,7 @@ class DishesController < ApplicationController
   private
   
     def set_dish
-      @dish = dish.new().find_dish(params[:id]) 
+      @dish = Dish.new().find_dish(params[:id]) 
     end
 
     def dish_params

@@ -7,6 +7,13 @@
   background-color: #CC0066;
 }
 
+.container-home{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
 nav ul a,
 nav .brand-logo {
   color: white;

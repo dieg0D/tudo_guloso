@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.create_user
+      sign_in(@user)
       redirect_to sign_in_path, notice: "Usuário foi criado com sucesso!"
     else 
       render action: :new

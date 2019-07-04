@@ -2,13 +2,21 @@
 <%= render partial: './common/header' %>
 
 <div class="div-body container">
-
   <h1>Editing dish</h1>
+  <%= form_with(model: @dish, local: true ,method: :put, url: dish_path(@dish)) do |form| %>
+    <div class="input-field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <%= render 'form', dish: @dish %>
+    <div class="input-field">
+      <%= form.collection_select(:category_id, @categories,:id, :name, prompt: true) %>
+    </div>
 
-  <%= link_to 'Show', @dish %> |
-  <%= link_to 'Back', dishes_path %>
-
+    <div class="actions">
+      <%= form.submit "atualizar", class: "waves-effect waves-light btn btn-login" %>
+    </div>
+  <% end %>
 </div>
+
 <%= render partial: './common/footer' %>
