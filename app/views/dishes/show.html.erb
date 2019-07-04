@@ -1,0 +1,14 @@
+<%= render partial: './common/header' %></div>
+
+<div class="div-body container">
+
+<p>
+  <strong>Name:</strong>
+  <%= @dish.name %>
+</p>
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>
+
+</div>
+<%= render partial: './common/footer' %>

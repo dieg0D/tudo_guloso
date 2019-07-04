@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_134009) do
+ActiveRecord::Schema.define(version: 2019_07_03_200016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", id: :serial, force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "comments", id: :serial, force: :cascade do |t|
     t.string "content"
@@ -27,6 +31,11 @@ ActiveRecord::Schema.define(version: 2019_07_01_134009) do
 
   create_table "dishes", id: :serial, force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "favorites", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
   end
 
   create_table "ingredients", id: :serial, force: :cascade do |t|
@@ -86,6 +95,8 @@ ActiveRecord::Schema.define(version: 2019_07_01_134009) do
 
   add_foreign_key "comments", "recipes", name: "comments_recipe_id_fkey"
   add_foreign_key "comments", "users", name: "comments_user_id_fkey"
+  add_foreign_key "favorites", "recipes", name: "favorites_recipe_id_fkey"
+  add_foreign_key "favorites", "users", name: "favorites_user_id_fkey"
   add_foreign_key "matches", "match_types", name: "matches_match_type_id_fkey"
   add_foreign_key "messages", "matches", name: "messages_match_id_fkey"
   add_foreign_key "recipe_ingredients", "ingredients", column: "ingrediente", name: "recipe_ingredients_ingrediente_fkey"

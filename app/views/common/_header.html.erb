@@ -37,16 +37,23 @@
       >
     </div>
   </li>
+  <li><a class="subheader">Minhas configurações</a></li>
   <li>
     <%= link_to user_path(current_user.id)do %>
     <i class="material-icons">face</i>Meu perfil<% end %>
   </li>
-  <li><a href="#!">Second Link</a></li>
+  <li>
+    <%= link_to edit_user_path(current_user.id)do %>
+    <i class="material-icons">settings</i>Editar perfil<% end %>
+  </li>
+  <li>
+    <%= link_to edit_user_path(current_user.id)do %>
+    <i class="material-icons">favorite</i>Meus matchs<% end %>
+  </li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Sistema</a></li>
   <li>
     <%= link_to sign_out_path, method: "delete" do %>
     <i class="material-icons">input</i>Log out <% end %>
   </li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
 </ul>

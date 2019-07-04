@@ -3,6 +3,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
     execute <<-SQL 
       CREATE TABLE "recipes"(
         "id" SERIAL PRIMARY KEY  NOT NULL,
+        "name" VARCHAR,
         "photo_recipe" BYTEA,
         "instructions" VARCHAR,
         "user_id" INTEGER,
