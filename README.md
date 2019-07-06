@@ -17,7 +17,7 @@ Nome do arquivo:
 ```
 tudo_guloso_development.sql
 ```
-As migrações com a criação de todas as tabelas está na basta 
+As migrações com a criação de todas as tabelas está na pasta 
 ```
 db/migrate
 ```
