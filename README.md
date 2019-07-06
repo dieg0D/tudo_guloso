@@ -1,24 +1,23 @@
-# README
+# Tudo Guloso - Encha o seu buchinho e o coração
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Integrantes:
 
-Things you may want to cover:
+Fernanda Macedo de Sousa – 17/0010058
 
-* Ruby version
+Gabriel dos Santos Martins – 15/0126298
 
-* System dependencies
+Diego Antônio Barbosa Cardoso – 16/0005116
 
-* Configuration
+Joao Lucas Azevedo Yamin Rodrigues da Cunha – 17/0013731
 
-* Database creation
+## Base de dados
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+O arquivo com as tabelas do banco de dados está na pasta raíz do projeto.
+Nome do arquivo:
+```
+tudo_guloso_development.sql
+```
+As migrações com a criação de todas as tabelas está na basta 
+```
+db/migrate
+```
